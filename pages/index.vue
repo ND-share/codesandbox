@@ -2,6 +2,7 @@
   <div class="container">
     <div>
       <Logo />
+      <p>testtesttesttesttesttesttesttesttesttesttesttesttest</p>
       <h1 class="title">codesandbox</h1>
       <div class="links">
         <a
