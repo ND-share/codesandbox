@@ -2,7 +2,6 @@
   <div class="container">
     <div>
       <Logo />
-      <p>testtesttesttesttesttesttesttesttesttesttesttesttest</p>
       <h1 class="title">codesandbox</h1>
       <div class="links">
         <a
@@ -21,13 +20,48 @@
         >
           GitHub
         </a>
+
+        <!-- v-model(v-on,v-bind) -->
+        <p>v-on,v-bindを使用した場合</p>
+        <input
+          v-bind:value="bindMessage"
+          placeholder="edit me"
+          v-on:input="bindMessage = $event.target.value"
+        />
+        <p>Message is: {{ bindMessage }}</p>
+
+        <br />
+
+        <!-- v-model(v-on,v-bindを省略して使用) -->
+        <p>v-on,v-bindを省略して使用した場合</p>
+        <input
+          :value="omittedMessage"
+          placeholder="edit me"
+          @input="omittedMessage = $event.target.value"
+        />
+        <p>Message is: {{ omittedMessage }}</p>
+
+        <br />
+
+        <!-- v-model -->
+        <p>v-modelを使用した場合</p>
+        <input v-model="modelMessage" placeholder="edit me" />
+        <p>Message is: {{ modelMessage }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      modelMessage: '',
+      omittedMessage: '',
+      bindMessage: '',
+    }
+  },
+}
 </script>
 
 <style>
