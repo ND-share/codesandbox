@@ -10,11 +10,17 @@ module.exports = {
   extends: [
     '@nuxtjs',
     'prettier',
-    'prettier/vue',
     'plugin:prettier/recommended',
     'plugin:nuxt/recommended',
   ],
   plugins: ['prettier'],
   // add your custom rules here
-  rules: {},
+  rules: {
+    // 研修用にOFF
+    // https://eslint.vuejs.org/rules/v-bind-style.html
+    'vue/v-bind-style': 'off',
+    // 研修用にOFF
+    // https://eslint.vuejs.org/rules/v-on-style.html
+    'vue/v-on-style': 'off'
+  },
 }
