@@ -10,16 +10,11 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    'bulma',
-    '~/assets/style/app.scss'
-  ],
+  css: ['bulma', '~/assets/style/app.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -34,16 +29,14 @@ export default {
       '@nuxtjs/eslint-module',
       {
         fix: true,
-      }
+      },
     ],
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
   ],
 
   // モジュール
-  modules: [
-    '@nuxtjs/axios',
-  ],
+  modules: ['@nuxtjs/axios'],
   module: {
     rules: [
       {

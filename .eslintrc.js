@@ -21,6 +21,6 @@ module.exports = {
     'vue/v-bind-style': 'off',
     // 研修用にOFF
     // https://eslint.vuejs.org/rules/v-on-style.html
-    'vue/v-on-style': 'off'
+    'vue/v-on-style': 'off',
   },
 }
