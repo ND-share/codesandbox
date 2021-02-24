@@ -161,7 +161,7 @@ export default {
   methods: {
     /**
      * 郵便番号検索
-     * @param {String} address 郵便番号
+     * @param {String} zip 郵便番号
      */
     async searchYubin(zip) {
       const response = await this.$axios.get(
