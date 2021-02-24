@@ -1,0 +1,23 @@
+h1 {
+  font-size: 1.6em;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+ul {
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+dl {
+  margin: 0 0 6px;
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    color: gray;
+    font-size: 0.8em;
+  }
+}
