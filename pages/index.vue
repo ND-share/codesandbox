@@ -135,7 +135,10 @@
               <dt>@click</dt>
               <dd>v-on:clickの短縮記法です。</dd>
             </dl>
-            <button class="button is-info">カウンター</button>
+            <button class="button is-info" @click="countUp()">
+              カウンター
+            </button>
+            <p>結果: {{ count }}</p>
           </div>
         </div>
       </article>
@@ -151,6 +154,7 @@ export default {
       omittedMessage: '',
       bindMessage: '',
       modelNumber: 0,
+      count: 0,
       zip: '',
       yubin: '',
       valueCheckBox: false,
@@ -177,6 +181,12 @@ export default {
      */
     changeCheckBox() {
       this.valueCheckBoxMessage = this.valueCheckBox ? '選択済' : '未選択'
+    },
+    /**
+     * カウントアップイベント - ボタン押下でカウント+1
+     */
+    countUp() {
+      return this.count++
     },
   },
 }
