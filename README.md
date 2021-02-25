@@ -25,10 +25,10 @@ create-nuxt-app v3.5.2
 $ yarn install
 
 # serve with hot reload at localhost:3000
-$ yarn dev
+# Codesandboxを無理やりproductionで起動させるため
+$ yarn d
 
 # build for production and launch server
-$ yarn build
 $ yarn start
 
 # generate static project
