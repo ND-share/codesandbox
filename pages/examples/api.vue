@@ -3,11 +3,9 @@
     <div class="container">
       <h1>番外編 API 呼出検証</h1>
       <hr />
-      asyncData {{ date }}
-      <hr />
-      created {{ cratedDate }}
-      <hr />
-      mounted {{ mountedDate }}
+      <div class="mb-3">asyncData: {{ date }}</div>
+      <div class="mb-3">created: {{ cratedDate }}</div>
+      <div class="mb-3">mounted: {{ mountedDate }}</div>
     </div>
   </section>
 </template>
