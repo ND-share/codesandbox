@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1>番外編 API 呼出検証</h1>
+      <h1>{{ title }}</h1>
       <hr />
       <div class="mb-3">asyncData: {{ date }}</div>
       <div class="mb-3">created: {{ cratedDate }}</div>
@@ -14,7 +14,7 @@
 export default {
   async asyncData({ $axios }) {
     const res = await $axios.get('/api/date', {})
-    // SSR: trueはERRORになる。SSR: falseにすれば動く面白い。
+    // ERRORになる。
     // const res = await $axios.get('/api/test', this.params)
     const date = res.data.date
     return { date }
@@ -25,7 +25,15 @@ export default {
       mountedDate: '',
     }
   },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
   computed: {
+    title() {
+      return '番外編 API 呼出検証'
+    },
     params() {
       return {
         foo: 'foo',
