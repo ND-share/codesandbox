@@ -53,7 +53,7 @@ export default {
   axios: {
     baseURL:
       process.env.NODE_ENV === 'production'
-        ? 'https://d8qsy.sse.codesandbox.io'
+        ? 'https://83x0e.sse.codesandbox.io'
         : 'http://localhost:3000',
   },
 
