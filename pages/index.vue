@@ -15,6 +15,8 @@
               <li>:checked, @change</li>
               <li>v-modelv-model（チェックボックス, ラジオボタン）</li>
               <li>v-model, @changeの複合</li>
+              <li>:value, @change</li>
+              <li>v-model（セレクトボックス）</li>
               <li>@blur</li>
             </ul>
           </div>
