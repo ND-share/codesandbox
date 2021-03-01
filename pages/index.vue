@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1>Capter1 イベントハンドリング</h1>
+      <h1>{{ title }}</h1>
       <hr />
       <article>
         <h2>フォーム入力</h2>
@@ -12,8 +12,9 @@
               <li>:value, @input</li>
               <li>v-model（テキスト）</li>
               <li>v-model.number</li>
-              <li>v-model（チェックボックス）</li>
-              <li>@change</li>
+              <li>:checked, @change</li>
+              <li>v-modelv-model（チェックボックス, ラジオボタン）</li>
+              <li>v-model, @changeの複合</li>
               <li>@blur</li>
             </ul>
           </div>
@@ -56,8 +57,8 @@
 
           <div class="column is-6">
             <dl>
-              <dt>v-model（テキスト）</dt>
-              <dd>v-bind, v-onのシンタックスシュガーです。</dd>
+              <dt>v-model（テキスト、テキストエリア）</dt>
+              <dd>:value, @inputのシンタックスシュガーです。</dd>
             </dl>
             <input v-model="modelMessage" type="text" placeholder="入力" />
             <p class="mt-2">結果: {{ modelMessage }}</p>
@@ -82,7 +83,23 @@
 
           <div class="column is-6">
             <dl>
-              <dt>v-model（チェックボックス）</dt>
+              <dt>:checked, @change</dt>
+              <dd>
+                チェックボックス、ラジオボックスを更新する時に利用します。
+              </dd>
+            </dl>
+            <input
+              :checked="valueCheckBox"
+              type="checkbox"
+              @change="valueCheckBox = $event.target.checked"
+            />
+            <p class="mt-2">結果: {{ valueCheckBox }}</p>
+          </div>
+
+          <div class="column is-6">
+            <dl>
+              <dt>v-model（チェックボックス, ラジオボタン）</dt>
+              <dd>:checked, @changeのシンタックスシュガーです。</dd>
             </dl>
             <input v-model="vModelCheckBox" type="checkbox" />
             <p class="mt-2">結果: {{ vModelCheckBox }}</p>
@@ -90,17 +107,44 @@
 
           <div class="column is-6">
             <dl>
-              <dt>@change</dt>
-              <dd>
-                チェックボックスやラジオボックスなどの状態が変更された時などに関連する何かを処理したい際に利用します。
-              </dd>
+              <dt>v-model, @changeの複合</dt>
+              <dd>更新とメソッド実行を同時に行うことも可能です。</dd>
             </dl>
             <input
-              v-model="valueCheckBox"
+              v-model="vModelChangeCheckBox"
               type="checkbox"
               @change="changeCheckBox()"
             />
-            <p class="mt-2">結果: {{ valueCheckBoxMessage }}</p>
+            <p class="mt-2">結果: {{ vModelChangeCheckBoxMessage }}</p>
+          </div>
+
+          <div class="column is-6">
+            <dl>
+              <dt>:value, @change</dt>
+              <dd>セレクトボックスを更新する時に利用します。</dd>
+            </dl>
+            <select
+              :value="valueSelected"
+              @change="valueSelected = $event.target.value"
+            >
+              <option value="1">hoge</option>
+              <option value="2">foo</option>
+              <option value="3">bar</option>
+            </select>
+            <p class="mt-2">結果: {{ valueSelected }}</p>
+          </div>
+
+          <div class="column is-6">
+            <dl>
+              <dt>v-model（セレクトボックス）</dt>
+              <dd>:value, @changeのシンタックスシュガーです。</dd>
+            </dl>
+            <select v-model="vModelSlected">
+              <option value="1">hoge</option>
+              <option value="2">foo</option>
+              <option value="3">bar</option>
+            </select>
+            <p class="mt-2">結果: {{ vModelSlected }}</p>
           </div>
 
           <div class="column is-6">
@@ -111,7 +155,7 @@
             <input
               v-model="zip"
               type="text"
-              placeholder="入力"
+              placeholder="入力（郵便番号）"
               @blur="searchYubin($event.target.value)"
             />
             <p class="mt-2">結果: {{ yubin }}</p>
@@ -159,8 +203,21 @@ export default {
       yubin: '',
       valueCheckBox: false,
       vModelCheckBox: false,
-      valueCheckBoxMessage: '未選択',
+      vModelChangeCheckBox: false,
+      vModelChangeCheckBoxMessage: '未選択',
+      valueSelected: '',
+      vModelSlected: '',
     }
+  },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
+  computed: {
+    title() {
+      return 'Chapter1 イベントハンドリング'
+    },
   },
   methods: {
     /**
@@ -180,13 +237,15 @@ export default {
      * チェックボックスの更新時実行イベント
      */
     changeCheckBox() {
-      this.valueCheckBoxMessage = this.valueCheckBox ? '選択済' : '未選択'
+      this.vModelChangeCheckBoxMessage = this.vModelChangeCheckBox
+        ? '選択済'
+        : '未選択'
     },
     /**
      * カウントアップイベント - ボタン押下でカウント+1
      */
     countUp() {
-      return this.count++
+      this.count++
     },
   },
 }
