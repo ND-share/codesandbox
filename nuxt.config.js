@@ -51,8 +51,7 @@ export default {
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // ビルド毎に本番URLが変更になるため
-    browserBaseURL: process.env.BROWSER_BASE_URL,
+    baseURL: '/'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
