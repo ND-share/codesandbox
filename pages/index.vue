@@ -158,9 +158,9 @@
               v-model="zip"
               type="text"
               placeholder="入力（郵便番号）"
-              @blur="searchYubin($event.target.value)"
+              @blur="searchAddress($event.target.value)"
             />
-            <p class="mt-2">結果: {{ yubin }}</p>
+            <p class="mt-2">結果: {{ address }}</p>
           </div>
         </div>
       </article>
@@ -202,7 +202,7 @@ export default {
       modelNumber: 0,
       count: 0,
       zip: '',
-      yubin: '',
+      address: '',
       valueCheckBox: false,
       vModelCheckBox: false,
       vModelChangeCheckBox: false,
@@ -226,11 +226,11 @@ export default {
      * 郵便番号検索
      * @param {String} zip 郵便番号
      */
-    async searchYubin(zip) {
+    async searchAddress(zip) {
       const response = await this.$axios.get(
         `https://api.zipaddress.net/?zipcode=${zip}`
       )
-      this.yubin =
+      this.address =
         response.data.code === 200
           ? `${response.data.data.pref} ${response.data.data.city}`
           : '失敗'
