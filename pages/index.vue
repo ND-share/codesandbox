@@ -13,7 +13,7 @@
               <li>v-model（テキスト）</li>
               <li>v-model.number</li>
               <li>:checked, @change</li>
-              <li>v-modelv-model（チェックボックス, ラジオボタン）</li>
+              <li>v-model（チェックボックス, ラジオボタン）</li>
               <li>v-model, @changeの複合</li>
               <li>:value, @change</li>
               <li>v-model（セレクトボックス）</li>
