@@ -12,7 +12,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
+  server: {
+    port: 2999, // デフォルト: 3000
+  },
   // SSR検証用
   ssr: true,
   // ssr: false,
