@@ -2,6 +2,8 @@
   <section class="section">
     <div class="container">
       <a @click="$router.push('/')">Home</a>
+      <a @click="$router.push('/chapter/chapter1')">chapter1</a>
+      <a @click="$router.push('/examples/api')">このサイトについて</a>
       <h1>Chapter2 イベントハンドリング</h1>
       <hr />
       <article>

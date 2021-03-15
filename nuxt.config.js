@@ -52,12 +52,7 @@ export default {
     ],
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    baseURL:
-      process.env.NODE_ENV === 'production'
-        ? 'https://83x0e.sse.codesandbox.io'
-        : 'http://localhost:3000',
-  },
+  axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
