@@ -1,7 +1,14 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1>{{ title }}</h1>
+      <div class="is-flex is-justify-content-space-between">
+        <h1>{{ title }}</h1>
+        <span class="icon-text">
+          <span class="icon">
+            <i class="mdi mdi-home"></i>
+          </span>
+        </span>
+      </div>
       <hr />
       <article>
         <h2>フォーム入力</h2>

@@ -13,12 +13,24 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  server: {
+    port: 2999
+  },
+
+  env: {
+    ENV: process.env.NODE_ENV
+  },
+
   // SSR検証用
   ssr: true,
   // ssr: false,
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['bulma', '~/assets/style/app.scss'],
+  css: [
+    '@mdi/font/css/materialdesignicons.min.css',
+    'bulma',
+    '~/assets/style/app.scss'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -50,12 +62,7 @@ export default {
     ],
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    baseURL:
-      process.env.NODE_ENV === 'production'
-        ? 'https://83x0e.sse.codesandbox.io'
-        : 'http://localhost:3000',
-  },
+  axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

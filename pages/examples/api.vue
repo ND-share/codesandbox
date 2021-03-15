@@ -34,22 +34,37 @@ export default {
     title() {
       return '番外編 API 呼出検証'
     },
+    /**
+     * computedで定義した値をasyncData, created, mountedで利用できるかの検証に使用するパラメータ
+     */
     params() {
       return {
         foo: 'foo',
         bar: 'bar',
       }
     },
+
+    env() {
+      return process.env.NODE_ENV
+    },
   },
   created() {
-    this.$axios.get('/api/date', this.params).then((res) => {
-      this.cratedDate = res.data.date
-    })
+    if (this.env === 'development') {
+      this.$axios.get('/api/date', this.params).then((res) => {
+        this.cratedDate = res.data.date
+      })
+    } else {
+      this.cratedDate = 'こちらははローカル環境でのみ実行可能です。'
+    }
   },
   mounted() {
-    this.$axios.get('/api/date', this.params).then((res) => {
-      this.mountedDate = res.data.date
-    })
+    if (this.env === 'development') {
+      this.$axios.get('/api/date', this.params).then((res) => {
+        this.mountedDate = res.data.date
+      })
+    } else {
+      this.mountedDate = 'こちらははローカル環境でのみ実行可能です。'
+    }
   },
 }
 </script>
