@@ -68,4 +68,7 @@ export default {
   build: {},
 
   serverMiddleware: { '/api': '~/api/index.js' },
+
+  //コンポーネントをオートインポートする v2.13+
+  components: true,
 }
