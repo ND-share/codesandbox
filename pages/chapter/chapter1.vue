@@ -1,9 +1,6 @@
 <template>
   <section class="section">
     <div class="container">
-      <a @click="$router.push('/')">Home</a>
-      <a @click="$router.push('/chapter/chapter2')">chapter2</a>
-      <a @click="$router.push('/examples/api')">このサイトについて</a>
       <h1>{{ title }}</h1>
       <hr />
       <article>

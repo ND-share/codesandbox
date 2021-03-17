@@ -1,8 +1,50 @@
 <template>
   <div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="home navbar-item has-text-black" @click="$router.push('/')">
+            <span class="icon mr-1">
+              <i class="mdi mdi-home mdi-24px"></i>
+            </span>
+            Home</a
+          >
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> Chapter </a>
+            <div class="navbar-dropdown">
+              <a
+                v-for="chapter in chapters"
+                :key="chapter.id"
+                class="navbar-item"
+                @click="$router.push(chapter.link)"
+              >
+                chapter{{ chapter.id }}
+              </a>
+              <hr class="navbar-divider" />
+              <a class="navbar-item" @click="$router.push('/examples/api')">
+                番外編
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
     <Nuxt />
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      chapters: [
+        { id: 1, link: '/chapter/chapter1' },
+        { id: 2, link: '/chapter/chapter2' },
+      ],
+    }
+  },
+}
+</script>
 
 <style>
 html {
@@ -51,5 +93,10 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.navbar {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 </style>

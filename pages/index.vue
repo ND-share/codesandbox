@@ -1,26 +1,29 @@
 <template>
   <section class="section">
     <div class="container">
-      <a @click="$router.push('/chapter/chapter1')">chapter1</a>
-      <a @click="$router.push('/chapter/chapter2')">chapter2</a>
-      <a @click="$router.push('/examples/api')">このサイトについて</a>
-      <h1>{{ title }}</h1>
+      <div class="is-flex">
+        <span class="icon-text mt-2 mr-2">
+          <span class="icon">
+            <i class="mdi mdi-home mdi-36px"></i>
+          </span>
+        </span>
+        <h1>{{ title }}</h1>
+      </div>
       <hr />
       <article>
-        <h2>フォーム入力</h2>
-        <div class="columns">
+        <h2>研修内容</h2>
+        <div class="columns mt-1">
           <div class="column is-12">
             <ul>
-              <li>v-bind:value, v-on:input</li>
-              <li>:value, @input</li>
-              <li>v-model（テキスト）</li>
-              <li>v-model.number</li>
-              <li>:checked, @change</li>
-              <li>v-model（チェックボックス, ラジオボタン）</li>
-              <li>v-model, @changeの複合</li>
-              <li>:value, @change</li>
-              <li>v-model（セレクトボックス）</li>
-              <li>@blur</li>
+              <li>
+                <a @click="$router.push('/chapter/chapter1')">chapter1</a>
+              </li>
+              <li>
+                <a @click="$router.push('/chapter/chapter2')">chapter2</a>
+              </li>
+              <li>
+                <a @click="$router.push('/examples/api')">このサイトについて</a>
+              </li>
             </ul>
           </div>
         </div>

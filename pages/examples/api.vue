@@ -1,9 +1,6 @@
 <template>
   <section class="section">
     <div class="container">
-      <a @click="$router.push('/')">Home</a>
-      <a @click="$router.push('/chapter/chapter1')">chapter1</a>
-      <a @click="$router.push('/chapter/chapter2')">chapter2</a>
       <h1>{{ title }}</h1>
       <hr />
       <div class="mb-3">asyncData: {{ date }}</div>
