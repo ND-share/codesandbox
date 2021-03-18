@@ -10,7 +10,7 @@
         <div class="columns mt-1">
           <div class="column is-12">
             <ul>
-              <li v-for="tutorial in tutorialList" :key="tutorial.index">
+              <li v-for="tutorial in tutorialList" :key="tutorial.id">
                 <a @click="$router.push(tutorial.link)">{{ tutorial.text }}</a>
               </li>
             </ul>
@@ -47,10 +47,12 @@ export default {
     tutorialList() {
       return [
         {
+          id: 1,
           text: 'Chapter1',
           link: '/tutorial/chapter1',
         },
         {
+          id: 2,
           text: 'Chapter2',
           link: '/tutorial/chapter2',
         },
