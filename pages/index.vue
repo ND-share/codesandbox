@@ -1,28 +1,29 @@
 <template>
-  <section class="section">
+  <section class="section pt-1">
     <div class="container">
       <div class="is-flex">
-        <span class="icon-text mt-2 mr-2">
-          <span class="icon">
-            <i class="mdi mdi-home mdi-36px"></i>
-          </span>
-        </span>
         <h1>{{ title }}</h1>
       </div>
       <hr />
-      <article>
-        <h2>研修内容</h2>
+      <article class="mb-5">
+        <h2>研修</h2>
         <div class="columns mt-1">
           <div class="column is-12">
             <ul>
-              <li>
-                <a @click="$router.push('/chapter/chapter1')">chapter1</a>
+              <li v-for="tutorial in tutorialList" :key="tutorial.index">
+                <a @click="$router.push(tutorial.link)">{{ tutorial.text }}</a>
               </li>
-              <li>
-                <a @click="$router.push('/chapter/chapter2')">chapter2</a>
-              </li>
-              <li>
-                <a @click="$router.push('/examples/api')">このサイトについて</a>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="mb-5">
+        <h2>番外編</h2>
+        <div class="columns mt-1">
+          <div class="column is-12">
+            <ul>
+              <li v-for="another in anotherList" :key="another.index">
+                <a @click="$router.push(another.link)">{{ another.text }}</a>
               </li>
             </ul>
           </div>
@@ -34,23 +35,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      modelMessage: '',
-      omittedMessage: '',
-      bindMessage: '',
-      modelNumber: 0,
-      count: 0,
-      zip: '',
-      address: '',
-      valueCheckBox: false,
-      vModelCheckBox: false,
-      vModelChangeCheckBox: false,
-      vModelChangeCheckBoxMessage: '未選択',
-      valueSelected: '',
-      vModelSlected: '',
-    }
-  },
   head() {
     return {
       title: this.title,
@@ -58,36 +42,27 @@ export default {
   },
   computed: {
     title() {
-      return 'Home'
+      return 'TOP'
     },
-  },
-  methods: {
-    /**
-     * 郵便番号検索
-     * @param {String} zip 郵便番号
-     */
-    async searchAddress(zip) {
-      const response = await this.$axios.get(
-        `https://api.zipaddress.net/?zipcode=${zip}`
-      )
-      this.address =
-        response.data.code === 200
-          ? `${response.data.data.pref} ${response.data.data.city}`
-          : '失敗'
+    tutorialList() {
+      return [
+        {
+          text: 'Chapter1',
+          link: '/tutorial/chapter1',
+        },
+        {
+          text: 'Chapter2',
+          link: '/tutorial/chapter2',
+        },
+      ]
     },
-    /**
-     * チェックボックスの更新時実行イベント
-     */
-    changeCheckBox() {
-      this.vModelChangeCheckBoxMessage = this.vModelChangeCheckBox
-        ? '選択済'
-        : '未選択'
-    },
-    /**
-     * カウントアップイベント - ボタン押下でカウント+1
-     */
-    countUp() {
-      this.count++
+    anotherList() {
+      return [
+        {
+          text: 'API 呼出検証',
+          link: '/examples/api',
+        },
+      ]
     },
   },
 }

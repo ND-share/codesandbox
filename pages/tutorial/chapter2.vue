@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section pt-1">
     <div class="container">
       <h1>{{ title }}</h1>
       <hr />
@@ -111,12 +111,17 @@ export default {
       message: 'Hello',
     }
   },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
   computed: {
     reversedMessage() {
       return this.message.split('').reverse().join('')
     },
     title() {
-      return 'Chpater2 イベントハンドリング'
+      return 'Chpater2'
     },
   },
   methods: {
