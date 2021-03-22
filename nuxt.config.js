@@ -14,11 +14,11 @@ export default {
   },
 
   server: {
-    port: 2999
+    port: 2999,
   },
 
   env: {
-    ENV: process.env.NODE_ENV
+    ENV: process.env.NODE_ENV,
   },
 
   // SSR検証用
@@ -29,7 +29,7 @@ export default {
   css: [
     '@mdi/font/css/materialdesignicons.min.css',
     'bulma',
-    '~/assets/style/app.scss'
+    '~/assets/style/app.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
