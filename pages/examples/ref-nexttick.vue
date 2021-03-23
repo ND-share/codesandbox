@@ -20,6 +20,13 @@
           </button>
         </div>
       </article>
+      <div class="mt-5">
+        <input v-model="boxValue" type="text" />
+        <button class="button is-info" @click="addBox">追加</button>
+        <ul id="box">
+          <li v-for="(b, bIndex) in box" :key="bIndex">{{ b }}</li>
+        </ul>
+      </div>
     </div>
     <base-dialog ref="dialog" />
   </section>
@@ -36,6 +43,8 @@ export default {
   data() {
     return {
       text: '変更前',
+      box: [],
+      boxValue: '',
     }
   },
   methods: {
@@ -54,6 +63,27 @@ export default {
      */
     openDialog() {
       this.$refs.dialog.open()
+    },
+    async addBox() {
+      this.box.push(this.boxValue)
+      const target = this.box.length - 1
+      let color = ''
+      await this.$nextTick()
+      if (this.boxValue.charAt(0) === 'A' || this.boxValue.charAt(0) === 'a') {
+        color = 'has-text-danger'
+      } else if (
+        this.boxValue.charAt(0) === 'B' ||
+        this.boxValue.charAt(0) === 'b'
+      ) {
+        color = 'has-text-success'
+      }
+      if (color !== '') {
+        document
+          .getElementById('box')
+          .getElementsByTagName('li')
+          [target].classList.add(color)
+      }
+      this.boxValue = ''
     },
   },
 }
