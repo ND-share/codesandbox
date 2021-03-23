@@ -5,7 +5,7 @@
       <hr />
       <article>
         <h2>textContentの変更を確認する</h2>
-        <p ref="hello">{{ text }}</p>
+        <p ref="text">{{ text }}</p>
         <div class="mt-2">
           <button class="button is-info" @click="tryReferenceChange">
             click
@@ -45,9 +45,9 @@ export default {
     async tryReferenceChange() {
       this.text = '変更後'
       // $refsはリアクティブではないため、DOM更新後出なければ値が反映されない。
-      console.log(this.$refs.hello.textContent)
+      console.log(this.$refs.text.textContent)
       await this.$nextTick()
-      console.log(this.$refs.hello.textContent)
+      console.log(this.$refs.text.textContent)
     },
     /**
      * $refsを利用してダイアログを開く
