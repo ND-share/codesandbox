@@ -54,9 +54,9 @@ export default {
     async tryReferenceChange() {
       this.text = '変更後'
       // $refsはリアクティブではないため、DOM更新後出なければ値が反映されない。
-      console.log(this.$refs.text.textContent)
+      console.log('nextTick前', this.$refs.text.textContent)
       await this.$nextTick()
-      console.log(this.$refs.text.textContent)
+      console.log('nextTick後', this.$refs.text.textContent)
     },
     /**
      * $refsを利用してダイアログを開く
