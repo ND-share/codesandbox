@@ -39,7 +39,7 @@
             </dl>
             <ul>
               <p class="mt-2">結果:</p>
-              <li v-for="vfor in vfors" :key="vfor.test">{{ vfor.test }}</li>
+              <li v-for="user in users" :key="user.id">{{ user.name }}</li>
             </ul>
           </div>
           <div class="column is-6">
@@ -50,42 +50,10 @@
                 *基本的な記法ですが、ディレクティブは短縮記法が推奨されています。
               </dd>
             </dl>
-            <p>Original message: "{{ message }}"</p>
+            <p>オリジナル メッセージ: "{{ message }}"</p>
             <p class="mt-2">
-              結果: Computed reversed message: "{{ reversedMessage }}"
+              結果: 反転メッセージ(computedの使用): "{{ reversedMessage }}"
             </p>
-          </div>
-          <div class="column is-6">
-            <dl>
-              <dt>$refs</dt>
-              <dd>
-                v-bindディレクティブとv-onディレクティブを利用した基礎的な記法です。<br />
-                *基本的な記法ですが、ディレクティブは短縮記法が推奨されています。
-              </dd>
-            </dl>
-            <input
-              type="text"
-              v-bind:value="bindMessage"
-              placeholder="入力"
-              v-on:input="bindMessage = $event.target.value"
-            />
-            <p class="mt-2">結果: {{ bindMessage }}</p>
-          </div>
-          <div class="column is-6">
-            <dl>
-              <dt>$nextTick</dt>
-              <dd>
-                v-bindディレクティブとv-onディレクティブを利用した基礎的な記法です。<br />
-                *基本的な記法ですが、ディレクティブは短縮記法が推奨されています。
-              </dd>
-            </dl>
-            <input
-              type="text"
-              v-bind:value="bindMessage"
-              placeholder="入力"
-              v-on:input="bindMessage = $event.target.value"
-            />
-            <p class="mt-2">結果: {{ bindMessage }}</p>
           </div>
         </div>
       </article>
@@ -99,14 +67,14 @@ export default {
     return {
       isIf: false,
       bindMessage: 'bindMessage',
-      vfors: [
-        { test: 'test' },
-        { test: 'test1' },
-        { test: 'test2' },
-        { test: 'test3' },
-        { test: 'test4' },
-        { test: 'test5' },
-        { test: 'test6' },
+      users: [
+        { id: 1, name: '田中' },
+        { id: 2, name: '鈴木' },
+        { id: 3, name: '佐藤' },
+        { id: 4, name: '伊藤' },
+        { id: 5, name: '高橋' },
+        { id: 6, name: '山本' },
+        { id: 7, name: '中村' },
       ],
       message: 'Hello',
     }
