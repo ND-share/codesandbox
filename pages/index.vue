@@ -49,12 +49,12 @@ export default {
         {
           id: 1,
           text: 'Chapter1',
-          link: '/tutorial/chapter1',
+          link: '/traning/chapter1',
         },
         {
           id: 2,
           text: 'Chapter2',
-          link: '/tutorial/chapter2',
+          link: '/traning/chapter2',
         },
       ]
     },

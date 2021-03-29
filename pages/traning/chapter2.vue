@@ -32,10 +32,7 @@
           <div class="column is-6">
             <dl>
               <dt>v-for</dt>
-              <dd>
-                v-bindディレクティブとv-onディレクティブを利用した基礎的な記法です。<br />
-                *基本的な記法ですが、ディレクティブは短縮記法が推奨されています。
-              </dd>
+              <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
             </dl>
             <ul>
               <p class="mt-2">結果:</p>
@@ -52,7 +49,7 @@
             </dl>
             <p>オリジナル メッセージ: "{{ message }}"</p>
             <p class="mt-2">
-              結果: 反転メッセージ(computedの使用): "{{ reversedMessage }}"
+              結果: 反転メッセージ(computedの使用) "{{ reversedMessage }}"
             </p>
           </div>
         </div>
