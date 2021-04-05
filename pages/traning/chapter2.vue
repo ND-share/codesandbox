@@ -25,9 +25,23 @@
                 *基本的な記法ですが、ディレクティブは短縮記法が推奨されています。
               </dd>
             </dl>
-            <button class="button is-info" @click="chagngeIf()">ボタン</button>
-            <p v-if="isIf" class="mt-2">結果: v-if={{ isIf }}</p>
-            <p v-else class="mt-2">結果: v-if={{ isIf }}</p>
+            <div v-if="isIf">
+              <button class="button is-danger" @click="chagngeIf()">
+                ログアウト
+              </button>
+              <p class="mt-2">結果:ログインしています</p>
+              <p class="mt-2">名前:田中太郎</p>
+              <p class="mt-2">年齢:18歳</p>
+              <p class="mt-2">身長:180cm</p>
+              <p class="mt-2">出身:北海道</p>
+              <p class="mt-2">性別:男性</p>
+            </div>
+            <div v-else>
+              <button class="button is-info" @click="chagngeIf()">
+                ログイン
+              </button>
+              <p class="mt-2">結果:ログアウトしています</p>
+            </div>
           </div>
           <div class="column is-6">
             <dl>
@@ -47,10 +61,8 @@
                 *基本的な記法ですが、ディレクティブは短縮記法が推奨されています。
               </dd>
             </dl>
-            <p>オリジナル メッセージ: "{{ message }}"</p>
-            <p class="mt-2">
-              結果: 反転メッセージ(computedの使用) "{{ reversedMessage }}"
-            </p>
+            <input v-model="modelMessage" type="text" placeholder="入力" />
+            <p class="mt-2">結果: {{ reversedMessage }}</p>
           </div>
         </div>
       </article>
@@ -73,7 +85,7 @@ export default {
         { id: 6, name: '山本' },
         { id: 7, name: '中村' },
       ],
-      message: 'Hello',
+      modelMessage: '',
     }
   },
   head() {
@@ -83,7 +95,7 @@ export default {
   },
   computed: {
     reversedMessage() {
-      return this.message.split('').reverse().join('')
+      return this.modelMessage.split('').reverse().join('')
     },
     title() {
       return 'Chpater2'
