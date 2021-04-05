@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'codesandbox',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ja',
     },
     meta: [
       { charset: 'utf-8' },
@@ -49,6 +49,8 @@ export default {
     ],
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    // https://github.com/nuxt-community/moment-module#readme
+    '@nuxtjs/moment',
   ],
 
   // モジュール
