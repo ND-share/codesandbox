@@ -11,7 +11,7 @@
               <li>v-if</li>
               <li>v-for</li>
               <li>computed</li>
-              <li>$ref属性</li>
+              <li>ref属性</li>
               <li>$nextTick</li>
             </ul>
           </div>
@@ -87,14 +87,20 @@
               </div>
             </div>
             <div class="column is-6">
+              <p>ref属性でコンポーネントのメソッドを呼び出す</p>
               <div class="mt-2">
                 <button class="button is-info" @click="openDialog">
-                  メソッドを呼び出す
+                  ダイアログを表示
                 </button>
               </div>
             </div>
             <div class="column is-6">
-              <input v-model="boxValue" type="text" />
+              <p>$nextTickのサンプル</p>
+              <input
+                v-model="boxValue"
+                type="text"
+                placeholder="リストに追加する"
+              />
               <button class="button is-info is-small" @click="addBox">
                 追加
               </button>
