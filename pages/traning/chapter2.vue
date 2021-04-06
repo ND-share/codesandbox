@@ -3,15 +3,15 @@
     <div class="container">
       <h1>{{ title }}</h1>
       <hr />
-      <article>
-        <h2>フォーム入力</h2>
+      <article class="mb-6">
+        <h2>ダミーダミー</h2>
         <div class="columns">
           <div class="column is-12">
             <ul>
               <li>v-if</li>
               <li>v-for</li>
               <li>computed</li>
-              <li>$refs</li>
+              <li>$ref属性</li>
               <li>$nextTick</li>
             </ul>
           </div>
@@ -22,23 +22,29 @@
               <dt>v-if</dt>
               <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
             </dl>
-            <div v-if="isIf">
-              <button class="button is-danger" @click="chagngeIf()">
-                ログアウト
+            <template v-if="isLogin">
+              <button class="button is-danger" @click="logout()">
+                {{ loginButton }}
               </button>
-              <p class="mt-2">結果:ログインしています</p>
-              <p class="mt-2">名前:田中太郎</p>
-              <p class="mt-2">年齢:18歳</p>
-              <p class="mt-2">身長:180cm</p>
-              <p class="mt-2">出身:北海道</p>
-              <p class="mt-2">性別:男性</p>
-            </div>
-            <div v-else>
-              <button class="button is-info" @click="chagngeIf()">
-                ログイン
+              <div class="mt-4 is-flex is-mobile">
+                <div class="mr-2">
+                  <figure class="image is-64x64">
+                    <img class="is-rounded" src="https://picsum.photos/100" />
+                  </figure>
+                </div>
+                <div>
+                  <dl>
+                    <dt>田中 太朗</dt>
+                    <dd>自己紹介</dd>
+                  </dl>
+                </div>
+              </div>
+            </template>
+            <template v-else>
+              <button class="button is-info" @click="login()">
+                {{ loginButton }}
               </button>
-              <p class="mt-2">結果:ログアウトしています</p>
-            </div>
+            </template>
           </div>
           <div class="column is-6">
             <dl>
@@ -46,7 +52,6 @@
               <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
             </dl>
             <ul>
-              <p class="mt-2">結果:</p>
               <li v-for="user in users" :key="user.id">{{ user.name }}</li>
             </ul>
           </div>
@@ -55,9 +60,50 @@
               <dt>computed</dt>
               <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
             </dl>
-            <input v-model="modelMessage" type="text" placeholder="入力" />
-            <p class="mt-2">結果: {{ reversedMessage }}</p>
+            <input v-model="text" type="text" placeholder="入力" />
+            <p class="mt-2">結果: {{ reverseText }}</p>
           </div>
+        </div>
+      </article>
+      <article class="mb-6">
+        <div>
+          <h2>ref属性, $nextTick</h2>
+          <hr />
+          <div class="columns is-multiline">
+            <div class="column is-6">
+              <p ref="text">{{ refText }}</p>
+              <p>
+                nextTick前：textContentの内容は【変更後】である。
+                {{ beforeNextTick }}
+              </p>
+              <p>
+                nextTick後：textContentの内容は【変更後】である。
+                {{ afterNextTick }}
+              </p>
+              <div class="mt-2">
+                <button class="button is-info" @click="tryReferenceChange">
+                  textContentの変更を確認する
+                </button>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div class="mt-2">
+                <button class="button is-info" @click="openDialog">
+                  メソッドを呼び出す
+                </button>
+              </div>
+            </div>
+            <div class="column is-6">
+              <input v-model="boxValue" type="text" />
+              <button class="button is-info is-small" @click="addBox">
+                追加
+              </button>
+              <ul id="box">
+                <li v-for="(b, bIndex) in box" :key="bIndex">{{ b }}</li>
+              </ul>
+            </div>
+          </div>
+          <base-dialog ref="dialog" />
         </div>
       </article>
     </div>
@@ -65,21 +111,28 @@
 </template>
 
 <script>
+// nuxt2.15現在 オートインポート設定で$refsでコンポーネントを呼び出すとundefinedとなる場合があるため注意
+import BaseDialog from '~/components/BaseDialog'
+
 export default {
+  components: {
+    BaseDialog,
+  },
   data() {
     return {
-      isIf: false,
-      bindMessage: 'bindMessage',
+      isLogin: false,
       users: [
         { id: 1, name: '田中' },
         { id: 2, name: '鈴木' },
         { id: 3, name: '佐藤' },
         { id: 4, name: '伊藤' },
-        { id: 5, name: '高橋' },
-        { id: 6, name: '山本' },
-        { id: 7, name: '中村' },
       ],
-      modelMessage: '',
+      text: '反転します',
+      refText: '変更前',
+      box: [],
+      boxValue: '',
+      beforeNextTick: 'いいえ',
+      afterNextTick: 'いいえ',
     }
   },
   head() {
@@ -88,16 +141,65 @@ export default {
     }
   },
   computed: {
-    reversedMessage() {
-      return this.modelMessage.split('').reverse().join('')
+    reverseText() {
+      return this.text.split('').reverse().join('')
     },
     title() {
       return 'Chpater2'
     },
+    loginButton() {
+      if (this.isLogin) {
+        return 'ログアウト'
+      } else {
+        return 'ログイン'
+      }
+    },
   },
   methods: {
-    chagngeIf() {
-      this.isIf = !this.isIf
+    login() {
+      this.isLogin = true
+    },
+    logout() {
+      this.isLogin = false
+    },
+    /**
+     * $refsの値変更検証
+     */
+    async tryReferenceChange() {
+      this.refText = '変更後'
+      this.beforeNextTick =
+        this.$refs.text.textContent === '変更後' ? 'はい' : 'いいえ'
+      // $refsはリアクティブではないため、DOM更新後出なければ値が反映されない。
+      await this.$nextTick()
+      this.afterNextTick =
+        this.$refs.text.textContent === '変更後' ? 'はい' : 'いいえ'
+    },
+    /**
+     * $refsを利用してダイアログを開く
+     */
+    openDialog() {
+      this.$refs.dialog.open()
+    },
+    async addBox() {
+      this.box.push(this.boxValue)
+      const target = this.box.length - 1
+      let color = ''
+      await this.$nextTick()
+      if (this.boxValue.charAt(0) === 'A' || this.boxValue.charAt(0) === 'a') {
+        color = 'has-text-danger'
+      } else if (
+        this.boxValue.charAt(0) === 'B' ||
+        this.boxValue.charAt(0) === 'b'
+      ) {
+        color = 'has-text-success'
+      }
+      if (color !== '') {
+        document
+          .getElementById('box')
+          .getElementsByTagName('li')
+          [target].classList.add(color)
+      }
+      this.boxValue = ''
     },
   },
 }
