@@ -53,7 +53,7 @@ export default {
         },
         {
           id: 2,
-          text: 'Chapter2',
+          text: 'Chapter2（レビュー中）',
           link: '/traning/chapter2',
         },
       ]
