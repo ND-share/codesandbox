@@ -114,52 +114,52 @@ export default {
   //     }
   //   },
   // },
-  methods: {
-    login() {
-      this.isLogin = true
-    },
-    logout() {
-      this.isLogin = false
-    },
-    /**
-     * $refsの値変更検証
-     */
-    async tryReferenceChange() {
-      this.refText = '変更後'
-      this.beforeNextTick =
-        this.$refs.text.textContent === '変更後' ? 'はい' : 'いいえ'
-      // $refsはリアクティブではないため、DOM更新後出なければ値が反映されない。
-      await this.$nextTick()
-      this.afterNextTick =
-        this.$refs.text.textContent === '変更後' ? 'はい' : 'いいえ'
-    },
-    /**
-     * $refsを利用してダイアログを開く
-     */
-    openDialog() {
-      this.$refs.dialog.open()
-    },
-    async addBox() {
-      this.box.push(this.boxValue)
-      const target = this.box.length - 1
-      let color = ''
-      await this.$nextTick()
-      if (this.boxValue.charAt(0) === 'A' || this.boxValue.charAt(0) === 'a') {
-        color = 'has-text-danger'
-      } else if (
-        this.boxValue.charAt(0) === 'B' ||
-        this.boxValue.charAt(0) === 'b'
-      ) {
-        color = 'has-text-success'
-      }
-      if (color !== '') {
-        document
-          .getElementById('box')
-          .getElementsByTagName('li')
-          [target].classList.add(color)
-      }
-      this.boxValue = ''
-    },
-  },
+  // methods: {
+  //   login() {
+  //     this.isLogin = true
+  //   },
+  //   logout() {
+  //     this.isLogin = false
+  //   },
+  //   /**
+  //    * $refsの値変更検証
+  //    */
+  //   async tryReferenceChange() {
+  //     this.refText = '変更後'
+  //     this.beforeNextTick =
+  //       this.$refs.text.textContent === '変更後' ? 'はい' : 'いいえ'
+  //     // $refsはリアクティブではないため、DOM更新後出なければ値が反映されない。
+  //     await this.$nextTick()
+  //     this.afterNextTick =
+  //       this.$refs.text.textContent === '変更後' ? 'はい' : 'いいえ'
+  //   },
+  //   /**
+  //    * $refsを利用してダイアログを開く
+  //    */
+  //   openDialog() {
+  //     this.$refs.dialog.open()
+  //   },
+  //   async addBox() {
+  //     this.box.push(this.boxValue)
+  //     const target = this.box.length - 1
+  //     let color = ''
+  //     await this.$nextTick()
+  //     if (this.boxValue.charAt(0) === 'A' || this.boxValue.charAt(0) === 'a') {
+  //       color = 'has-text-danger'
+  //     } else if (
+  //       this.boxValue.charAt(0) === 'B' ||
+  //       this.boxValue.charAt(0) === 'b'
+  //     ) {
+  //       color = 'has-text-success'
+  //     }
+  //     if (color !== '') {
+  //       document
+  //         .getElementById('box')
+  //         .getElementsByTagName('li')
+  //         [target].classList.add(color)
+  //     }
+  //     this.boxValue = ''
+  //   },
+  // },
 }
 </script>
