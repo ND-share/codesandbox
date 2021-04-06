@@ -33,7 +33,7 @@ ul {
 }
 
 dl {
-  margin: 0 0 6px;
+  padding: 0 0 12px;
   dt {
     font-weight: bold;
   }
@@ -41,4 +41,8 @@ dl {
     color: gray;
     font-size: 0.8em;
   }
+}
+
+input {
+  height: 30px
 }
