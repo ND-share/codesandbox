@@ -40,11 +40,11 @@
                 </div>
               </div>
             </template>
-            <template v-else>
+            <!-- <template v-else> -->
               <!-- <button class="button is-info" @click="login()">
                 {{ loginButton }}
               </button> -->
-            </template>
+            <!-- </template> -->
           </div>
           <div class="column is-6">
             <dl>
