@@ -63,6 +63,7 @@
             <input v-model="text" type="text" placeholder="入力" />
             <p class="mt-2">結果: {{ reverseText }}</p>
           </div>
+          cccc
         </div>
       </article>
     </div>
@@ -94,11 +95,11 @@ export default {
       afterNextTick: 'いいえ',
     }
   },
-  head() {
-    return {
-      title: this.title,
-    }
-  },
+  // head() {
+  //   return {
+  //     title: this.title,
+  //   }
+  // },
   // computed: {
   //   reverseText() {
   //     return this.text.split('').reverse().join('')
