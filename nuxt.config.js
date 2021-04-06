@@ -73,5 +73,4 @@ export default {
   build: {},
 
   serverMiddleware: { '/api': '~/api/index.js' },
-
 }
