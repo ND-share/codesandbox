@@ -20,10 +20,7 @@
           <div class="column is-6">
             <dl>
               <dt>v-if</dt>
-              <dd>
-                v-bindディレクティブとv-onディレクティブを利用した基礎的な記法です。<br />
-                *基本的な記法ですが、ディレクティブは短縮記法が推奨されています。
-              </dd>
+              <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
             </dl>
             <div v-if="isIf">
               <button class="button is-danger" @click="chagngeIf()">
@@ -56,10 +53,7 @@
           <div class="column is-6">
             <dl>
               <dt>computed</dt>
-              <dd>
-                v-bindディレクティブとv-onディレクティブを利用した基礎的な記法です。<br />
-                *基本的な記法ですが、ディレクティブは短縮記法が推奨されています。
-              </dd>
+              <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
             </dl>
             <input v-model="modelMessage" type="text" placeholder="入力" />
             <p class="mt-2">結果: {{ reversedMessage }}</p>
