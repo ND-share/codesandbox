@@ -99,22 +99,21 @@ export default {
       title: this.title,
     }
   },
-  computed: {
-    reverseText() {
-      return ''
-    //   return this.text.split('').reverse().join('')
-    },
-    title() {
-      return 'Chpater2'
-    },
-    // loginButton() {
-    //   if (this.isLogin) {
-    //     return 'ログアウト'
-    //   } else {
-    //     return 'ログイン'
-    //   }
-    // },
-  },
+  // computed: {
+  //   reverseText() {
+  //     return this.text.split('').reverse().join('')
+  //   },
+  //   title() {
+  //     return 'Chpater2'
+  //   },
+  //   loginButton() {
+  //     if (this.isLogin) {
+  //       return 'ログアウト'
+  //     } else {
+  //       return 'ログイン'
+  //     }
+  //   },
+  // },
   methods: {
     login() {
       this.isLogin = true
