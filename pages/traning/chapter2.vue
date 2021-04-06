@@ -203,7 +203,7 @@ export default {
         document
           .getElementById('box')
           .getElementsByTagName('li')
-          [target].classList.add(color)
+            [target].classList.add(color)
       }
       this.boxValue = ''
     },
