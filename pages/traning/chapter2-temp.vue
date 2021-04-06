@@ -94,15 +94,15 @@ export default {
       afterNextTick: 'いいえ',
     }
   },
-  // head() {
-  //   return {
-  //     title: this.title,
-  //   }
-  // },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
   computed: {
-    reverseText() {
-      return this.text.split('').reverse().join('')
-    },
+  //   reverseText() {
+  //     return this.text.split('').reverse().join('')
+  //   },
     title() {
       return 'Chpater2'
     },
