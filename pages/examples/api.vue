@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  async asyncData({ $axios, $moment }) {
+  async asyncData({ $axios, $moment, env }) {
     let date = null
     // 画面更新や直接更新などの場合にサーバーサイドで呼び出される
     if (process.server) {
@@ -29,7 +29,7 @@ export default {
      * const res = await $axios.get('/api/test', this.params)
      * const date = this.$moment(res.data.date).format('h:mm:ss:SS')
      */
-    return { date }
+    return { date, env }
   },
   data() {
     return {
@@ -55,12 +55,9 @@ export default {
         bar: 'bar',
       }
     },
-    env() {
-      return process.env.NODE_ENV
-    },
   },
   created() {
-    if (this.env === 'development') {
+    if (this.env.ENV === 'development') {
       this.$axios.get('/api/date', this.params).then((res) => {
         this.cratedDate = this.$moment(res.data.date).format('h:mm:ss:SS')
       })
@@ -69,7 +66,7 @@ export default {
     }
   },
   mounted() {
-    if (this.env === 'development') {
+    if (this.env.ENV === 'development') {
       this.$axios.get('/api/date', this.params).then((res) => {
         this.mountedDate = this.$moment(res.data.date).format('h:mm:ss:SS')
       })
