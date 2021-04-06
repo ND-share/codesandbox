@@ -13,8 +13,15 @@
 <script>
 export default {
   async asyncData({ $axios, $moment }) {
-    const res = await $axios.get('/api/date', {})
-    const date = $moment(res.data.date).format('h:mm:ss:SS')
+    let date = null
+    // 画面更新や直接更新などの場合にサーバーサイドで呼び出される
+    if (process.server) {
+      const res = await $axios.get('/api/date', {})
+      date = $moment(res.data.date).format('h:mm:ss:SS').toString()
+      // nuxt-link router.pushなどはクライアントサイドで呼び出される
+    } else {
+      date = 'クライアントサイドで呼び出されました。'
+    }
     /**
      * asyncData内ではthisが利用できない
      *
