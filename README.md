@@ -24,7 +24,7 @@ create-nuxt-app v3.5.2
 # install dependencies
 $ yarn install
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost:2999
 # Codesandboxを無理やりproductionで起動させるため
 $ yarn d
 

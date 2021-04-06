@@ -11,12 +11,19 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   async asyncData({ $axios }) {
     const res = await $axios.get('/api/date', {})
-    // ERRORになる。
-    // const res = await $axios.get('/api/test', this.params)
-    const date = res.data.date
+    const date = moment(res.data.date).format('h:mm:ss:SS')
+    /**
+     * asyncData内ではthisが利用できない
+     *
+     * thisが使えないためERRORとなる例
+     * const res = await $axios.get('/api/test', this.params)
+     * const date = this.$moment(res.data.date).format('h:mm:ss:SS')
+     */
     return { date }
   },
   data() {
@@ -34,22 +41,36 @@ export default {
     title() {
       return '番外編 API 呼出検証'
     },
+    /**
+     * computedで定義した値をasyncData, created, mountedで利用できるかの検証に使用するパラメータ
+     */
     params() {
       return {
         foo: 'foo',
         bar: 'bar',
       }
     },
+    env() {
+      return process.env.NODE_ENV
+    },
   },
   created() {
-    this.$axios.get('/api/date', this.params).then((res) => {
-      this.cratedDate = res.data.date
-    })
+    if (this.env === 'development') {
+      this.$axios.get('/api/date', this.params).then((res) => {
+        this.cratedDate = this.$moment(res.data.date).format('h:mm:ss:SS')
+      })
+    } else {
+      this.cratedDate = 'こちらははローカル環境でのみ実行可能です。'
+    }
   },
   mounted() {
-    this.$axios.get('/api/date', this.params).then((res) => {
-      this.mountedDate = res.data.date
-    })
+    if (this.env === 'development') {
+      this.$axios.get('/api/date', this.params).then((res) => {
+        this.mountedDate = this.$moment(res.data.date).format('h:mm:ss:SS')
+      })
+    } else {
+      this.mountedDate = 'こちらははローカル環境でのみ実行可能です。'
+    }
   },
 }
 </script>
