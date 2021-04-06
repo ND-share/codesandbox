@@ -23,7 +23,7 @@
               <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
             </dl>
             <template v-if="isLogin">
-              <button class="button is-danger" @click="logout()">
+              <button class="button is-danger">
                 {{ loginButton }}
               </button>
               <div class="mt-4 is-flex is-mobile">
@@ -41,7 +41,7 @@
               </div>
             </template>
             <template v-else>
-              <button class="button is-info" @click="login()">
+              <button class="button is-info">
                 {{ loginButton }}
               </button>
             </template>
@@ -65,65 +65,18 @@
           </div>
         </div>
       </article>
-      <article class="mb-6">
-        <div>
-          <h2>ref属性, $nextTick</h2>
-          <hr />
-          <div class="columns is-multiline">
-            <div class="column is-6">
-              <p ref="text">{{ refText }}</p>
-              <p>
-                nextTick前：textContentの内容は【変更後】である。
-                {{ beforeNextTick }}
-              </p>
-              <p>
-                nextTick後：textContentの内容は【変更後】である。
-                {{ afterNextTick }}
-              </p>
-              <div class="mt-2">
-                <button class="button is-info" @click="tryReferenceChange">
-                  textContentの変更を確認する
-                </button>
-              </div>
-            </div>
-            <div class="column is-6">
-              <p>ref属性でコンポーネントのメソッドを呼び出す</p>
-              <div class="mt-2">
-                <button class="button is-info" @click="openDialog">
-                  ダイアログを表示
-                </button>
-              </div>
-            </div>
-            <div class="column is-6">
-              <p>$nextTickのサンプル</p>
-              <input
-                v-model="boxValue"
-                type="text"
-                placeholder="リストに追加する"
-              />
-              <button class="button is-info is-small" @click="addBox">
-                追加
-              </button>
-              <ul id="box">
-                <li v-for="(b, bIndex) in box" :key="bIndex">{{ b }}</li>
-              </ul>
-            </div>
-          </div>
-          <base-dialog ref="dialog" />
-        </div>
-      </article>
     </div>
   </section>
 </template>
 
 <script>
 // nuxt2.15現在 オートインポート設定で$refsでコンポーネントを呼び出すとundefinedとなる場合があるため注意
-import BaseDialog from '~/components/BaseDialog'
+// import BaseDialog from '~/components/BaseDialog'
 
 export default {
-  components: {
-    BaseDialog,
-  },
+  // components: {
+  //   BaseDialog,
+  // },
   data() {
     return {
       isLogin: false,
