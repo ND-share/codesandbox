@@ -60,7 +60,7 @@ export default {
         this.cratedDate = this.$moment(res.data.date).format('h:mm:ss:SS')
       })
     } else {
-      this.cratedDate = 'こちらははローカル環境でのみ実行可能です。'
+      this.cratedDate = 'こちらはローカル環境でのみ実行可能です。'
     }
   },
   mounted() {
@@ -69,7 +69,7 @@ export default {
         this.mountedDate = this.$moment(res.data.date).format('h:mm:ss:SS')
       })
     } else {
-      this.mountedDate = 'こちらははローカル環境でのみ実行可能です。'
+      this.mountedDate = 'こちらはローカル環境でのみ実行可能です。'
     }
   },
 }
