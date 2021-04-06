@@ -14,7 +14,7 @@ export default {
   },
 
   server: {
-    port: 2999,
+    port: process.env.NODE_ENV === 'development' ? 2999 : 3000,
   },
 
   env: {
