@@ -35,7 +35,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
+  /**
+   * コンポーネントをオートインポートする v2.13+
+   * https://go.nuxtjs.dev/config-components
+   */
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
@@ -71,6 +74,4 @@ export default {
 
   serverMiddleware: { '/api': '~/api/index.js' },
 
-  //コンポーネントをオートインポートする v2.13+
-  components: true,
 }
