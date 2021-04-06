@@ -100,19 +100,20 @@ export default {
     }
   },
   computed: {
-    // reverseText() {
+    reverseText() {
+      return ''
     //   return this.text.split('').reverse().join('')
-    // },
+    },
     title() {
       return 'Chpater2'
     },
-    loginButton() {
-      if (this.isLogin) {
-        return 'ログアウト'
-      } else {
-        return 'ログイン'
-      }
-    },
+    // loginButton() {
+    //   if (this.isLogin) {
+    //     return 'ログアウト'
+    //   } else {
+    //     return 'ログイン'
+    //   }
+    // },
   },
   methods: {
     login() {
