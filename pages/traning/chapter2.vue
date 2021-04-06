@@ -23,9 +23,9 @@
               <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
             </dl>
             <template v-if="isLogin">
-              <button class="button is-danger" @click="logout()">
+              <!-- <button class="button is-danger" @click="logout()">
                 {{ loginButton }}
-              </button>
+              </button> -->
               <div class="mt-4 is-flex is-mobile">
                 <div class="mr-2">
                   <figure class="image is-64x64">
@@ -41,9 +41,9 @@
               </div>
             </template>
             <template v-else>
-              <button class="button is-info" @click="login()">
+              <!-- <button class="button is-info" @click="login()">
                 {{ loginButton }}
-              </button>
+              </button> -->
             </template>
           </div>
           <div class="column is-6">
@@ -153,13 +153,13 @@ export default {
     title() {
       return 'Chpater2'
     },
-    // loginButton() {
-    //   if (this.isLogin) {
-    //     return 'ログアウト'
-    //   } else {
-    //     return 'ログイン'
-    //   }
-    // },
+    loginButton() {
+      if (this.isLogin) {
+        return 'ログアウト'
+      } else {
+        return 'ログイン'
+      }
+    },
   },
   methods: {
     login() {
