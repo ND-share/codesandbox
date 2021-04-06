@@ -63,7 +63,6 @@
             <input v-model="text" type="text" placeholder="入力" />
             <p class="mt-2">結果: {{ reverseText }}</p>
           </div>
-          cccc
         </div>
       </article>
     </div>
@@ -115,7 +114,7 @@ export default {
   //     }
   //   },
   // },
-  // methods: {
+  methods: {
   //   login() {
   //     this.isLogin = true
   //   },
@@ -140,27 +139,27 @@ export default {
   //   openDialog() {
   //     this.$refs.dialog.open()
   //   },
-  //   async addBox() {
-  //     this.box.push(this.boxValue)
-  //     const target = this.box.length - 1
-  //     let color = ''
-  //     await this.$nextTick()
-  //     if (this.boxValue.charAt(0) === 'A' || this.boxValue.charAt(0) === 'a') {
-  //       color = 'has-text-danger'
-  //     } else if (
-  //       this.boxValue.charAt(0) === 'B' ||
-  //       this.boxValue.charAt(0) === 'b'
-  //     ) {
-  //       color = 'has-text-success'
-  //     }
-  //     if (color !== '') {
-  //       document
-  //         .getElementById('box')
-  //         .getElementsByTagName('li')
-  //         [target].classList.add(color)
-  //     }
-  //     this.boxValue = ''
-  //   },
-  // },
+    async addBox() {
+      this.box.push(this.boxValue)
+      const target = this.box.length - 1
+      let color = ''
+      await this.$nextTick()
+      if (this.boxValue.charAt(0) === 'A' || this.boxValue.charAt(0) === 'a') {
+        color = 'has-text-danger'
+      } else if (
+        this.boxValue.charAt(0) === 'B' ||
+        this.boxValue.charAt(0) === 'b'
+      ) {
+        color = 'has-text-success'
+      }
+      if (color !== '') {
+        document
+          .getElementById('box')
+          .getElementsByTagName('li')
+          [target].classList.add(color)
+      }
+      this.boxValue = ''
+    },
+  },
 }
 </script>
