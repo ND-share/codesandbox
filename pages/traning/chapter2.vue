@@ -153,13 +153,13 @@ export default {
     title() {
       return 'Chpater2'
     },
-    // loginButton() {
-    //   if (this.isLogin) {
-    //     return 'ログアウト'
-    //   } else {
-    //     return 'ログイン'
-    //   }
-    // },
+    loginButton() {
+      if (this.isLogin) {
+        return 'Logout'
+      } else {
+        return 'Login'
+      }
+    },
   },
   methods: {
     login() {
