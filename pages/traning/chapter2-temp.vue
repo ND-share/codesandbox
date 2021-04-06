@@ -100,9 +100,9 @@ export default {
     }
   },
   computed: {
-    reverseText() {
-      return this.text.split('').reverse().join('')
-    },
+    // reverseText() {
+    //   return this.text.split('').reverse().join('')
+    // },
     title() {
       return 'Chpater2'
     },
