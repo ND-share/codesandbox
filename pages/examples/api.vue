@@ -11,12 +11,10 @@
 </template>
 
 <script>
-import moment from 'moment'
-
 export default {
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, $moment }) {
     const res = await $axios.get('/api/date', {})
-    const date = moment(res.data.date).format('h:mm:ss:SS')
+    const date = $moment(res.data.date).format('h:mm:ss:SS')
     /**
      * asyncData内ではthisが利用できない
      *
