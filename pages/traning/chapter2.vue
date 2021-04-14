@@ -90,26 +90,31 @@
               <p>ref属性でコンポーネントのメソッドを呼び出す</p>
               <div class="mt-2">
                 <button class="button is-info" @click="openDialog">
-                  ダイアログを表示
+                  モーダルを表示
                 </button>
               </div>
             </div>
             <div class="column is-6">
               <p>$nextTickのサンプル</p>
               <input
-                v-model="boxValue"
+                v-model="value"
                 type="text"
                 placeholder="リストに追加する"
               />
-              <button class="button is-info is-small" @click="addBox">
+              <button class="button is-info is-small" @click="pushList">
                 追加
               </button>
-              <ul id="box">
-                <li v-for="(b, bIndex) in box" :key="bIndex">{{ b }}</li>
+              <ul id="texts">
+                <li
+                  v-for="(textInList, textIndex) in listOfTexts"
+                  :key="textIndex"
+                >
+                  {{ textInList }}
+                </li>
               </ul>
             </div>
           </div>
-          <base-dialog ref="dialog" />
+          <base-modal ref="dialog" />
         </div>
       </article>
     </div>
@@ -118,11 +123,11 @@
 
 <script>
 // nuxt2.15現在 オートインポート設定で$refsでコンポーネントを呼び出すとundefinedとなる場合があるため注意
-import BaseDialog from '~/components/BaseDialog'
+import BaseModal from '~/components/BaseModal'
 
 export default {
   components: {
-    BaseDialog,
+    BaseModal,
   },
   data() {
     return {
@@ -135,8 +140,8 @@ export default {
       ],
       text: '反転します',
       refText: '変更前',
-      box: [],
-      boxValue: '',
+      listOfTexts: [],
+      value: '',
       beforeNextTick: 'いいえ',
       afterNextTick: 'いいえ',
     }
@@ -186,8 +191,8 @@ export default {
     openDialog() {
       this.$refs.dialog.open()
     },
-    async addBox() {
-      this.box.push(this.boxValue)
+    async pushList() {
+      this.listOfTexts.push(this.value)
       const target = this.box.length - 1
       let color = ''
       await this.$nextTick()
@@ -201,11 +206,11 @@ export default {
       }
       if (color !== '') {
         document
-          .getElementById('box')
+          .getElementById('texts')
           .getElementsByTagName('li')
-            [target].classList.add(color)
+          [target].classList.add(color)
       }
-      this.boxValue = ''
+      this.value = ''
     },
   },
 }
