@@ -4,23 +4,37 @@
       <h1>{{ title }}</h1>
       <hr />
       <article class="mb-6">
-        <h2>ダミーダミー</h2>
         <div class="columns">
           <div class="column is-12">
             <ul>
-              <li>v-if</li>
-              <li>v-for</li>
-              <li>computed</li>
-              <li>ref属性</li>
-              <li>$nextTick</li>
+              <li>v-for ディレクティブ</li>
+              <li>v-if ディレクティブ</li>
+              <li>computed オプション - 算出プロパティ</li>
+              <li>ref 属性</li>
+              <li>$nextTick メソッド</li>
             </ul>
           </div>
         </div>
         <div class="columns is-multiline">
           <div class="column is-6">
             <dl>
-              <dt>v-if</dt>
-              <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
+              <dt>v-for ディレクティブ</dt>
+              <dd>
+                同じテンプレートを繰り返し表示したい場合はv-for
+                ディレクティブを利用することができます。
+              </dd>
+            </dl>
+            <ul>
+              <li v-for="user in users" :key="user.id">{{ user.name }}</li>
+            </ul>
+          </div>
+          <div class="column is-6">
+            <dl>
+              <dt>v-if ディレクティブ</dt>
+              <dd>
+                v-if
+                ディレクティブは、条件に応じてレンダリングするかどうかを決定します。
+              </dd>
             </dl>
             <template v-if="isLogin">
               <button class="button is-danger" @click="logout()">
@@ -48,46 +62,24 @@
           </div>
           <div class="column is-6">
             <dl>
-              <dt>v-for</dt>
-              <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
-            </dl>
-            <ul>
-              <li v-for="user in users" :key="user.id">{{ user.name }}</li>
-            </ul>
-          </div>
-          <div class="column is-6">
-            <dl>
-              <dt>computed</dt>
-              <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
+              <dt>computed オプション - 算出プロパティ</dt>
+              <dd>参照しているプロパティが更新された際に値が更新されます。</dd>
             </dl>
             <input v-model="text" type="text" placeholder="入力" />
             <p class="mt-2">結果: {{ reverseText }}</p>
           </div>
         </div>
-      </article>
-      <article class="mb-6">
         <div>
-          <h2>ref属性, $nextTick</h2>
-          <hr />
           <div class="columns is-multiline">
             <div class="column is-6">
-              <p ref="text">{{ refText }}</p>
-              <p>
-                nextTick前：textContentの内容は【変更後】である。
-                {{ beforeNextTick }}
-              </p>
-              <p>
-                nextTick後：textContentの内容は【変更後】である。
-                {{ afterNextTick }}
-              </p>
-              <div class="mt-2">
-                <button class="button is-info" @click="tryReferenceChange">
-                  textContentの変更を確認する
-                </button>
-              </div>
-            </div>
-            <div class="column is-6">
-              <p>ref属性でコンポーネントのメソッドを呼び出す</p>
+              <dl>
+                <dt>ref属性</dt>
+                <dd>
+                  DOM要素にref属性を付与しておくと、コードから参照できるようになります。
+                  ref属性を付与したDOM要素には、<code>refs</code>を使ってアクセスすることができます。
+                </dd>
+              </dl>
+              <p>ref属性を指定したコンポーネントのメソッドを呼び出す。</p>
               <div class="mt-2">
                 <button class="button is-info" @click="openDialog">
                   モーダルを表示
@@ -95,7 +87,16 @@
               </div>
             </div>
             <div class="column is-6">
-              <p>$nextTickのサンプル</p>
+              <dl>
+                <dt>$nextTick メソッド</dt>
+                <dd>
+                  $nextTick
+                  メソッドはFunctionをパラメータに受け取り、DOM更新後に実行します。プロパティを更新しても、即時にDOMに反映されるわけではないため、このようなこのような$nextTickを利用した考慮が必要となります。
+                </dd>
+              </dl>
+              <p>
+                Aまたはaから始まる文字の場合赤,Bまたはbから始まる文字の場合緑を付与する。
+              </p>
               <input
                 v-model="value"
                 type="text"
@@ -112,6 +113,31 @@
                   {{ textInList }}
                 </li>
               </ul>
+            </div>
+            <div class="column is-6">
+              <dl>
+                <dt>ref 属性と$nextTick メソッドのサンプル</dt>
+                <dd>
+                  以下はref
+                  属性を指定した要素から値を取得する場合を想定して作成しています。以下の様に期待していた値が取得できないことがあります。
+                </dd>
+              </dl>
+              <p>
+                $nextTick前：textContentの内容は【変更後】である。
+                {{ beforeNextTick }}
+              </p>
+              <p>
+                $nextTick後：textContentの内容は【変更後】である。
+                {{ afterNextTick }}
+              </p>
+              <p>
+                結果：<span ref="text">{{ refText }}</span>
+              </p>
+              <div class="mt-2">
+                <button class="button is-info" @click="tryReferenceChange">
+                  textContentの変更を確認する
+                </button>
+              </div>
             </div>
           </div>
           <base-modal ref="dialog" />
@@ -193,15 +219,12 @@ export default {
     },
     async pushList() {
       this.listOfTexts.push(this.value)
-      const target = this.box.length - 1
+      const target = this.listOfTexts.length - 1
       let color = ''
       await this.$nextTick()
-      if (this.boxValue.charAt(0) === 'A' || this.boxValue.charAt(0) === 'a') {
+      if (this.value.charAt(0) === 'A' || this.value.charAt(0) === 'a') {
         color = 'has-text-danger'
-      } else if (
-        this.boxValue.charAt(0) === 'B' ||
-        this.boxValue.charAt(0) === 'b'
-      ) {
+      } else if (this.value.charAt(0) === 'B' || this.value.charAt(0) === 'b') {
         color = 'has-text-success'
       }
       if (color !== '') {
