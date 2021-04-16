@@ -4,23 +4,37 @@
       <h1>{{ title }}</h1>
       <hr />
       <article class="mb-6">
-        <h2>ダミーダミー</h2>
         <div class="columns">
           <div class="column is-12">
             <ul>
-              <li>v-if</li>
-              <li>v-for</li>
-              <li>computed</li>
-              <li>ref属性</li>
-              <li>$nextTick</li>
+              <li>v-for ディレクティブ</li>
+              <li>v-if ディレクティブ</li>
+              <li>computed オプション - 算出プロパティ</li>
+              <li>ref 属性</li>
+              <li>$nextTick メソッド</li>
             </ul>
           </div>
         </div>
         <div class="columns is-multiline">
           <div class="column is-6">
             <dl>
-              <dt>v-if</dt>
-              <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
+              <dt>v-for ディレクティブ</dt>
+              <dd>
+                同じテンプレートを繰り返し表示したい場合はv-for
+                ディレクティブを利用することができます。
+              </dd>
+            </dl>
+            <ul>
+              <li v-for="user in users" :key="user.id">{{ user.name }}</li>
+            </ul>
+          </div>
+          <div class="column is-6">
+            <dl>
+              <dt>v-if ディレクティブ</dt>
+              <dd>
+                v-if
+                ディレクティブは、条件に応じてレンダリングするかどうかを決定します。
+              </dd>
             </dl>
             <template v-if="isLogin">
               <button class="button is-danger" @click="logout()">
@@ -48,68 +62,85 @@
           </div>
           <div class="column is-6">
             <dl>
-              <dt>v-for</dt>
-              <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
+              <dt>computed オプション - 算出プロパティ</dt>
+              <dd>参照しているプロパティが更新された際に値が更新されます。</dd>
             </dl>
-            <ul>
-              <li v-for="user in users" :key="user.id">{{ user.name }}</li>
-            </ul>
-          </div>
-          <div class="column is-6">
-            <dl>
-              <dt>computed</dt>
-              <dd>ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
-            </dl>
-            <input v-model="text" type="text" placeholder="入力" />
+            <input v-model="originalText" type="text" placeholder="入力" />
             <p class="mt-2">結果: {{ reverseText }}</p>
           </div>
         </div>
-      </article>
-      <article class="mb-6">
         <div>
-          <h2>ref属性, $nextTick</h2>
-          <hr />
           <div class="columns is-multiline">
             <div class="column is-6">
-              <p ref="text">{{ refText }}</p>
+              <dl>
+                <dt>ref属性</dt>
+                <dd>
+                  DOM要素にref属性を付与しておくと、コードから参照できるようになります。
+                  ref属性を付与したDOM要素には、<code>refs</code>を使ってアクセスすることができます。
+                </dd>
+              </dl>
+              <p class="mb-2">
+                ref属性を指定したコンポーネントのメソッドを呼び出す。
+              </p>
+              <button class="button is-info" @click="openModal">
+                モーダルを表示
+              </button>
+            </div>
+            <div class="column is-6">
+              <dl>
+                <dt>$nextTick メソッド</dt>
+                <dd>
+                  $nextTick
+                  メソッドはFunctionをパラメータに受け取り、DOM更新後に実行します。プロパティを更新しても、即時にDOMに反映されるわけではないため、このようなこのような$nextTickを利用した考慮が必要となります。
+                </dd>
+              </dl>
+              <p class="mb-2">
+                Aまたはaから始まる文字の場合赤,Bまたはbから始まる文字の場合緑をテキストに付与する。
+              </p>
+              <input
+                v-model="text"
+                type="text"
+                placeholder="リストに追加する"
+              />
+              <button class="button is-info is-small" @click="pushList">
+                追加
+              </button>
+              <ul id="texts">
+                <li
+                  v-for="(textInList, textIndex) in listOfTexts"
+                  :key="textIndex"
+                >
+                  {{ textInList }}
+                </li>
+              </ul>
+            </div>
+            <div class="column is-6">
+              <dl>
+                <dt>ref 属性と$nextTick メソッドのサンプル</dt>
+                <dd>
+                  ref
+                  属性を指定した要素から値を取得する場合を想定して作成しています。以下の様に期待していた値が取得できないことがあります。
+                </dd>
+              </dl>
               <p>
-                nextTick前：textContentの内容は【変更後】である。
+                $nextTick前：textContentの内容は【変更後】である。
                 {{ beforeNextTick }}
               </p>
               <p>
-                nextTick後：textContentの内容は【変更後】である。
+                $nextTick後：textContentの内容は【変更後】である。
                 {{ afterNextTick }}
               </p>
+              <p>
+                結果：<span ref="text">{{ refText }}</span>
+              </p>
               <div class="mt-2">
-                <button class="button is-info" @click="tryReferenceChange">
+                <button class="button is-info" @click="tryChangeReference">
                   textContentの変更を確認する
                 </button>
               </div>
             </div>
-            <div class="column is-6">
-              <p>ref属性でコンポーネントのメソッドを呼び出す</p>
-              <div class="mt-2">
-                <button class="button is-info" @click="openDialog">
-                  ダイアログを表示
-                </button>
-              </div>
-            </div>
-            <div class="column is-6">
-              <p>$nextTickのサンプル</p>
-              <input
-                v-model="boxValue"
-                type="text"
-                placeholder="リストに追加する"
-              />
-              <button class="button is-info is-small" @click="addBox">
-                追加
-              </button>
-              <ul id="box">
-                <li v-for="(b, bIndex) in box" :key="bIndex">{{ b }}</li>
-              </ul>
-            </div>
           </div>
-          <base-dialog ref="dialog" />
+          <base-modal ref="modal" />
         </div>
       </article>
     </div>
@@ -118,11 +149,11 @@
 
 <script>
 // nuxt2.15現在 オートインポート設定で$refsでコンポーネントを呼び出すとundefinedとなる場合があるため注意
-import BaseDialog from '~/components/BaseDialog'
+import BaseModal from '~/components/BaseModal'
 
 export default {
   components: {
-    BaseDialog,
+    BaseModal,
   },
   data() {
     return {
@@ -133,10 +164,10 @@ export default {
         { id: 3, name: '佐藤' },
         { id: 4, name: '伊藤' },
       ],
-      text: '反転します',
+      originalText: '反転します',
       refText: '変更前',
-      box: [],
-      boxValue: '',
+      listOfTexts: [],
+      text: '',
       beforeNextTick: 'いいえ',
       afterNextTick: 'いいえ',
     }
@@ -147,12 +178,15 @@ export default {
     }
   },
   computed: {
+    // originalTextを反転させる
     reverseText() {
-      return this.text.split('').reverse().join('')
+      return this.originalText.split('').reverse().join('')
     },
+    // タイトル
     title() {
-      return 'Chpater2'
+      return 'Chapter2'
     },
+    // ログインボタンに表示する文字列を返却する
     loginButton() {
       if (this.isLogin) {
         return 'Logout'
@@ -162,20 +196,22 @@ export default {
     },
   },
   methods: {
+    // ログイン
     login() {
       this.isLogin = true
     },
+    // ログアウト
     logout() {
       this.isLogin = false
     },
     /**
      * $refsの値変更検証
      */
-    async tryReferenceChange() {
+    async tryChangeReference() {
       this.refText = '変更後'
       this.beforeNextTick =
         this.$refs.text.textContent === '変更後' ? 'はい' : 'いいえ'
-      // $refsはリアクティブではないため、DOM更新後出なければ値が反映されない。
+      //  ref属性もDOM更新後出なければ値が反映されない。
       await this.$nextTick()
       this.afterNextTick =
         this.$refs.text.textContent === '変更後' ? 'はい' : 'いいえ'
@@ -183,29 +219,33 @@ export default {
     /**
      * $refsを利用してダイアログを開く
      */
-    openDialog() {
-      this.$refs.dialog.open()
+    openModal() {
+      this.$refs.modal.open()
     },
-    async addBox() {
-      this.box.push(this.boxValue)
-      const target = this.box.length - 1
+    /**
+     * リストに追加する。一致する文字列から始まる場合はテキストにclassを付与する
+     */
+    async pushList() {
+      this.listOfTexts.push(this.text)
+      const target = this.listOfTexts.length - 1
       let color = ''
       await this.$nextTick()
-      if (this.boxValue.charAt(0) === 'A' || this.boxValue.charAt(0) === 'a') {
+      // テキストAまたはaから始まる場合
+      if (this.text.charAt(0) === 'A' || this.text.charAt(0) === 'a') {
         color = 'has-text-danger'
-      } else if (
-        this.boxValue.charAt(0) === 'B' ||
-        this.boxValue.charAt(0) === 'b'
-      ) {
+        // テキストBまたはbから始まる場合
+      } else if (this.text.charAt(0) === 'B' || this.text.charAt(0) === 'b') {
         color = 'has-text-success'
       }
       if (color !== '') {
+        // classを付与する
         document
-          .getElementById('box')
+          .getElementById('texts')
           .getElementsByTagName('li')
-            [target].classList.add(color)
+          [target].classList.add(color)
       }
-      this.boxValue = ''
+      // プロパティを初期化
+      this.text = ''
     },
   },
 }

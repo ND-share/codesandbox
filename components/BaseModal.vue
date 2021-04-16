@@ -1,8 +1,11 @@
 <template>
   <div :class="{ 'is-active': isActive }" class="modal">
     <div class="modal-background" />
-    <div class="modal-content">
-      内容内容内容内容内容内容内容内容内容内容内容内容
+    <div class="modal-content box">
+      <p class="title">タイトル</p>
+      <p>
+        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+      </p>
     </div>
     <button
       class="modal-close is-large"
