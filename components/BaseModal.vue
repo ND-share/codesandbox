@@ -2,7 +2,7 @@
   <div :class="{ 'is-active': isActive }" class="modal">
     <div class="modal-background" />
     <div class="modal-content box">
-      <p class="title">title</p>
+      <p class="title">Title</p>
       <p>
         texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
       </p>
