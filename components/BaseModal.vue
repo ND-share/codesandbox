@@ -2,16 +2,10 @@
   <div :class="{ 'is-active': isActive }" class="modal">
     <div class="modal-background" />
     <div class="modal-content box">
-      <p class="title">title</p>
-      <p>
-        texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
-      </p>
+      <p class="title">Title</p>
+      <slot />
     </div>
-    <button
-      class="modal-close is-large"
-      aria-label="close"
-      @click="close()"
-    ></button>
+    <button class="modal-close is-large" aria-label="close" @click="close()" />
   </div>
 </template>
 

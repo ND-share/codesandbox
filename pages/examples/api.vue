@@ -48,6 +48,7 @@ export default {
     },
     /**
      * computedで定義した値をasyncData, created, mountedで利用できるかの検証に使用するパラメータ
+     * @return {Object}
      */
     params() {
       return {

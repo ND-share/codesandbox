@@ -32,6 +32,7 @@
               </dd>
             </dl>
             <input
+              class="input"
               type="text"
               v-bind:value="bindMessage"
               placeholder="入力"
@@ -50,6 +51,7 @@
             </dl>
             <input
               type="text"
+              class="input"
               :value="omittedMessage"
               placeholder="入力"
               @input="omittedMessage = $event.target.value"
@@ -62,7 +64,12 @@
               <dt>v-model（テキスト、テキストエリア）</dt>
               <dd>:value, @inputのシンタックスシュガーです。</dd>
             </dl>
-            <input v-model="modelMessage" type="text" placeholder="入力" />
+            <input
+              v-model="modelMessage"
+              class="input"
+              type="text"
+              placeholder="入力"
+            />
             <p class="mt-2">結果: {{ modelMessage }}</p>
             <p>typeof {{ typeof modelMessage }}</p>
           </div>
@@ -76,6 +83,7 @@
             </dl>
             <input
               v-model.number="modelNumber"
+              class="input"
               type="text"
               placeholder="入力"
             />
@@ -125,14 +133,16 @@
               <dt>:value, @change</dt>
               <dd>セレクトボックスを更新する時に利用します。</dd>
             </dl>
-            <select
-              :value="valueSelected"
-              @change="valueSelected = $event.target.value"
-            >
-              <option value="1">hoge</option>
-              <option value="2">foo</option>
-              <option value="3">bar</option>
-            </select>
+            <div class="select">
+              <select
+                :value="valueSelected"
+                @change="valueSelected = $event.target.value"
+              >
+                <option value="1">hoge</option>
+                <option value="2">foo</option>
+                <option value="3">bar</option>
+              </select>
+            </div>
             <p class="mt-2">結果: {{ valueSelected }}</p>
           </div>
 
@@ -141,11 +151,13 @@
               <dt>v-model（セレクトボックス）</dt>
               <dd>:value, @changeのシンタックスシュガーです。</dd>
             </dl>
-            <select v-model="vModelSlected">
-              <option value="1">hoge</option>
-              <option value="2">foo</option>
-              <option value="3">bar</option>
-            </select>
+            <div class="select">
+              <select v-model="vModelSlected">
+                <option value="1">hoge</option>
+                <option value="2">foo</option>
+                <option value="3">bar</option>
+              </select>
+            </div>
             <p class="mt-2">結果: {{ vModelSlected }}</p>
           </div>
 
@@ -156,6 +168,7 @@
             </dl>
             <input
               v-model="zip"
+              class="input"
               type="text"
               placeholder="入力（郵便番号）"
               @blur="searchAddress($event.target.value)"
@@ -181,7 +194,7 @@
               <dt>@click</dt>
               <dd>v-on:clickの短縮記法です。</dd>
             </dl>
-            <button class="button is-info" @click="countUp()">
+            <button class="button is-info my-2" @click="countUp()">
               カウンター
             </button>
             <p>結果: {{ count }}</p>

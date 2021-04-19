@@ -140,7 +140,11 @@
               </div>
             </div>
           </div>
-          <base-modal ref="modal" />
+          <base-modal ref="modal">
+            <p>
+              texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
+            </p>
+          </base-modal>
         </div>
       </article>
     </div>
@@ -148,8 +152,7 @@
 </template>
 
 <script>
-// nuxt2.15現在 オートインポート設定で$refsでコンポーネントを呼び出すとundefinedとなる場合があるため注意
-import BaseModal from '~/components/BaseModal'
+import BaseModal from '~/components/BaseModal.vue'
 
 export default {
   components: {

@@ -56,6 +56,11 @@ export default {
           text: 'Chapter2',
           link: '/traning/chapter2',
         },
+        {
+          id: 3,
+          text: 'Chapter3',
+          link: '/traning/chapter3',
+        },
       ]
     },
     anotherList() {

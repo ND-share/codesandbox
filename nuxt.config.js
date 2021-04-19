@@ -33,13 +33,15 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/vee-validate.js'],
 
   /**
    * コンポーネントをオートインポートする v2.13+
    * https://go.nuxtjs.dev/config-components
+   *
+   * 例はディレクトリ【components】配下の接頭辞Baseを全てオートインポートする設定
    */
-  components: true,
+  components: [{ path: '~/components', prefix: 'Base' }],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -70,7 +72,9 @@ export default {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ['vee-validate/dist/rules'],
+  },
 
   serverMiddleware: { '/api': '~/api/index.js' },
 }
