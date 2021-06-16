@@ -3,15 +3,9 @@
     <div class="modal-background" />
     <div class="modal-content box">
       <p class="title">Title</p>
-      <p>
-        texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
-      </p>
+      <slot />
     </div>
-    <button
-      class="modal-close is-large"
-      aria-label="close"
-      @click="close()"
-    ></button>
+    <button class="modal-close is-large" aria-label="close" @click="close()" />
   </div>
 </template>
 
