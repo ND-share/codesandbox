@@ -15,13 +15,13 @@ export default {
     // ボタンテキスト
     text: {
       type: String,
-      require: true,
+      required: true,
       default: '',
     },
     // ボタンタイプ
     type: {
       type: String,
-      require: true,
+      required: false,
       default: 'button',
     },
     /**
@@ -30,7 +30,7 @@ export default {
      */
     disabled: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
   },

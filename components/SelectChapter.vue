@@ -22,7 +22,7 @@ export default {
     // 入力値
     changeValue: {
       type: String,
-      require: true,
+      required: true,
       default: '',
     },
   },

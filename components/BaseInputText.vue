@@ -29,19 +29,19 @@ export default {
     // 入力値
     inputValue: {
       type: String,
-      require: true,
+      required: true,
       default: '',
     },
     // Vee Validateのエラーフィールドとプレースホルダーのテキスト
     field: {
       type: String,
-      require: true,
+      required: true,
       default: '',
     },
     // input名
     name: {
       type: String,
-      require: true,
+      required: true,
       default: '',
     },
   },
