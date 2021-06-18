@@ -6,7 +6,7 @@
       <article class="mb-6">
         <h2>Props</h2>
         <div class="columns is-multiline">
-          <base-definition
+          <base-description
             dt-tag="Propsを利用して用語を設定"
             dd-tag="Propsを利用して説明を設定"
           />
@@ -15,56 +15,56 @@
       <article class="mb-6">
         <h2>スロット</h2>
         <div class="columns is-multiline">
-          <base-definition
+          <base-description
             dt-tag="スロット利用しない"
             dd-tag="スロットを利用せずデフォルトを設定しない場合スロット部分は何も表示されません"
           />
-          <base-definition
+          <base-description
             dt-tag="スロットを利用する"
             dd-tag="HTML要素と同様に、コンポーネントにコンテンツを渡すことで表示されます"
           >
             <b>何でも追加可能です</b>
-          </base-definition>
+          </base-description>
         </div>
       </article>
       <article class="mb-6">
         <h2>スコープ付きスロット</h2>
         <div class="columns is-multiline">
-          <base-definition
+          <base-description
             p-tag="バインドされたスロットプロパティを全て読込する"
           >
             <select-chapter v-model="people">
               <template #item="slotProps"> {{ slotProps.value }} 人 </template>
             </select-chapter>
             <p class="mt-2">結果：{{ people }}</p>
-          </base-definition>
-          <base-definition
+          </base-description>
+          <base-description
             p-tag="バインドされたスロットプロパティを分割代入する（同じプロパティ名がすでに存在する場合などは使えないため注意してください）"
           >
             <select-chapter v-model="people">
               <template #item="{ value }"> {{ value }} 人 </template>
             </select-chapter>
             <p class="mt-2">結果：{{ people }}</p>
-          </base-definition>
-          <base-definition
+          </base-description>
+          <base-description
             p-tag="スロットプロパティを利用せずデフォルトを利用する"
           >
             <select-chapter v-model="xNumber" />
             <p class="mt-2">結果：{{ xNumber }}</p>
-          </base-definition>
+          </base-description>
         </div>
       </article>
       <article class="mb-6">
         <h2>emit</h2>
         <div class="columns">
-          <base-definition
+          <base-description
             dt-tag="イベントをemit"
             dd-tag="クリックイベントを親コンポーネントに渡す"
           >
             <base-button-info text="カウンター" @click="countUp()" />
             <p class="mt-2">結果：{{ count }}</p>
-          </base-definition>
-          <base-definition
+          </base-description>
+          <base-description
             dt-tag="値をemit"
             dd-tag="値を親コンポーネントに渡す（*こちら構成を実際に使ったことないので一例です）"
           >
@@ -85,7 +85,7 @@
               </form>
             </validation-observer>
             <p class="mt-2">送信結果：{{ submitResult }}</p>
-          </base-definition>
+          </base-description>
         </div>
       </article>
     </div>
