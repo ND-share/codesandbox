@@ -3,7 +3,7 @@
     <!-- 用語と説明 -->
     <template v-if="dtTag && ddTag">
       <dl>
-        <dt>{{ dtTag }}</dt>
+        <dt :class="titleColorClass">{{ dtTag }}</dt>
         <dd>
           {{ ddTag }}
         </dd>
@@ -37,6 +37,12 @@ export default {
     },
     // 説明のみ
     pTag: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    // タイトルカラーclassを設定してください
+    titleColorClass: {
       type: String,
       required: false,
       default: '',

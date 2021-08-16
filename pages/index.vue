@@ -11,7 +11,9 @@
           <div class="column is-12">
             <ul>
               <li v-for="tutorial in tutorialList" :key="tutorial.id">
-                <a @click="$router.push(tutorial.link)">{{ tutorial.text }}</a>
+                <nuxt-link :to="{ name: tutorial.link }">{{
+                  tutorial.text
+                }}</nuxt-link>
               </li>
             </ul>
           </div>
@@ -23,7 +25,9 @@
           <div class="column is-12">
             <ul>
               <li v-for="another in anotherList" :key="another.index">
-                <a @click="$router.push(another.link)">{{ another.text }}</a>
+                <router-link :to="{ name: another.link }">{{
+                  another.text
+                }}</router-link>
               </li>
             </ul>
           </div>
@@ -49,25 +53,35 @@ export default {
         {
           id: 1,
           text: 'Chapter1',
-          link: '/traning/chapter1',
+          link: 'traning-chapter1',
         },
         {
           id: 2,
           text: 'Chapter2',
-          link: '/traning/chapter2',
+          link: 'traning-chapter2',
         },
         {
           id: 3,
           text: 'Chapter3',
-          link: '/traning/chapter3',
+          link: 'traning-chapter3',
         },
+        {
+          id: 4,
+          text: 'Chapter4-1',
+          link: 'traning-chapter4-1',
+        },
+        // {
+        //   id: 5,
+        //   text: 'Chapter4-2',
+        //   link: 'traning-chapter4-2',
+        // },
       ]
     },
     anotherList() {
       return [
         {
           text: 'API 呼出検証',
-          link: '/examples/api',
+          link: 'examples-api',
         },
       ]
     },
