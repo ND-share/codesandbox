@@ -109,9 +109,14 @@ export default {
       xNumber: '',
     }
   },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
   computed: {
     title() {
-      return 'コンポーネント'
+      return 'Chapter3 コンポーネント'
     },
   },
   methods: {

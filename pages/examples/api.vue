@@ -17,7 +17,7 @@ export default {
     // 画面更新や直接更新などの場合にサーバーサイドで呼び出される
     if (process.server) {
       const res = await $axios.get('/api/date', {})
-      date = $moment(res.data.date).format('h:mm:ss:SS').toString()
+      date = $moment(res.data.date).format('H:mm:ss:SSS').toString()
       // nuxt-link router.pushなどはクライアントサイドで呼び出される
     } else {
       date = 'クライアントサイドで呼び出されました。'
@@ -60,7 +60,7 @@ export default {
   created() {
     if (this.env.ENV === 'development') {
       this.$axios.get('/api/date', this.params).then((res) => {
-        this.cratedDate = this.$moment(res.data.date).format('h:mm:ss:SS')
+        this.cratedDate = this.$moment(res.data.date).format('H:mm:ss:SSS')
       })
     } else {
       this.cratedDate = 'こちらはローカル環境でのみ実行可能です。'
@@ -69,7 +69,7 @@ export default {
   mounted() {
     if (this.env.ENV === 'development') {
       this.$axios.get('/api/date', this.params).then((res) => {
-        this.mountedDate = this.$moment(res.data.date).format('h:mm:ss:SS')
+        this.mountedDate = this.$moment(res.data.date).format('H:mm:ss:SSS')
       })
     } else {
       this.mountedDate = 'こちらはローカル環境でのみ実行可能です。'
