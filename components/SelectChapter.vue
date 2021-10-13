@@ -16,7 +16,7 @@
 export default {
   model: {
     prop: 'changeValue',
-    event: 'changeEvent',
+    event: 'change',
   },
   props: {
     // 入力値
@@ -43,7 +43,7 @@ export default {
      * @param {Object} event
      */
     change(event) {
-      this.$emit('changeEvent', event.target.value)
+      this.$emit('change', event.target.value)
     },
   },
 }
