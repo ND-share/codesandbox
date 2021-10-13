@@ -16,9 +16,9 @@ const config = () => {
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
 
-    // server: {
-    //   port: process.env.NODE_ENV === 'development' ? 2999 : 3000,
-    // },
+    server: {
+      port: process.env.NODE_ENV === 'development' ? 2999 : 3000,
+    },
 
     // SSR検証用
     ssr: true,
