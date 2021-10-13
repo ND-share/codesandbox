@@ -20,10 +20,6 @@ const config = () => {
       port: process.env.NODE_ENV === 'development' ? 2999 : 3000,
     },
 
-    env: {
-      ENV: process.env.NODE_ENV,
-    },
-
     // SSR検証用
     ssr: true,
     // ssr: false,
