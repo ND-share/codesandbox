@@ -77,13 +77,15 @@ export default {
         // },
       ]
     },
+    // TODO:修正するため一時的に削除
     anotherList() {
-      return [
-        {
-          text: 'API 呼出検証',
-          link: 'examples-api',
-        },
-      ]
+      return []
+    //   return [
+    //     {
+    //       text: 'API 呼出検証',
+    //       link: 'examples-api',
+    //     },
+    //   ]
     },
   },
 }
