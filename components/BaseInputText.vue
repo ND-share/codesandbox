@@ -23,7 +23,7 @@
 export default {
   model: {
     prop: 'inputValue',
-    event: 'inputEvent',
+    event: 'input',
   },
   props: {
     // 入力値
@@ -51,7 +51,7 @@ export default {
      * @param {Object} event
      */
     input(event) {
-      this.$emit('inputEvent', event.target.value)
+      this.$emit('input', event.target.value)
     },
   },
 }
