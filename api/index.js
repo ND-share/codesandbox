@@ -1,11 +1,11 @@
-const express = require('express')
+import express from 'express'
 const app = express()
 
 app.get('/date', (req, res) => {
   res.status(200).json({ date: new Date() })
 })
 
-module.exports = {
+export default {
   path: '/api',
   handler: app,
 }
